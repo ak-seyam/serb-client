@@ -4,7 +4,13 @@ import 'package:serb/components/SERBcardBook.dart';
 import 'package:serb/components/bottom_title.dart';
 import '../../model/Book.dart';
 
-class BestMatches extends StatelessWidget {
+class BestMatches extends StatefulWidget {
+  @override
+  _BestMatchesState createState() => _BestMatchesState();
+}
+
+class _BestMatchesState extends State<BestMatches> {
+  bool expanded = false;
   @override
   Widget build(BuildContext context) {
     return Consumer<Book>(
@@ -15,12 +21,19 @@ class BestMatches extends StatelessWidget {
                   topRight: Radius.circular(50),
                 )
             ),
-            height: 150,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
-                BottomTitle(title: "Best Matches"),
-                Container(
+                GestureDetector(
+                    onTap: (){
+                      setState(() {
+                        expanded = !expanded;
+                      });
+                    } ,child: BottomTitle(title: "Best Matches")),
+                AnimatedContainer(
+                  curve: Curves.easeIn,
+                  duration: Duration(milliseconds: 200),
+                  height: expanded ? 120 : 0,
                   color: Colors.white,
                   child: SERBCardBook(
                     book: book, //TODO this will be the search result book

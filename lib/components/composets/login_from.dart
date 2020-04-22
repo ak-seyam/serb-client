@@ -25,7 +25,7 @@ class _SERBLoginFromState extends State<SERBLoginFrom> {
               TextFormField(
                 //username
                 keyboardType: TextInputType.text,
-                decoration: SERBInputDecoration(hintText: "username"),
+                decoration: SERBInputDecoration(inputLabel: "username"),
                 validator: (value) {
                   if (value.isEmpty) {
                     return "please enter the username";
@@ -39,7 +39,7 @@ class _SERBLoginFromState extends State<SERBLoginFrom> {
               TextFormField(
                 //password
                 keyboardType: TextInputType.text,
-                decoration: SERBInputDecoration(hintText: "password"),
+                decoration: SERBInputDecoration(inputLabel: "password"),
                 obscureText: true,
                 validator: (value) {
                   if (value.isEmpty) {

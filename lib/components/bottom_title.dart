@@ -9,11 +9,11 @@ class BottomTitle extends StatelessWidget {
     return Container(
       padding: EdgeInsets.fromLTRB(8.0, 8.0, 32.0, 8.0),
       alignment: Alignment.centerLeft,
-      height: 50,
+      height: 40,
       decoration: BoxDecoration(
         color: DARK_BLUE,
         borderRadius: BorderRadius.only(
-          topRight: Radius.circular(50)
+          topRight: Radius.circular(40)
         )
       ),
       child: Text(

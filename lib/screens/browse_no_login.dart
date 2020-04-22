@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:serb/components/SERBInputDecorationUnderlineDark.dart';
 import 'package:serb/components/SERBList.dart';
+import 'package:serb/components/SERBTab.dart';
 import 'package:serb/components/composets/login_from.dart';
 import 'package:serb/misc/constants.dart';
 import 'package:serb/samples/offerSamples.dart';
@@ -110,18 +111,21 @@ class _BrowseNoLoginState extends State<BrowseNoLogin> {
                                       pageViewController.jumpToPage(0);
                                       setState(() {});
                                     },
-                                    child: _SERBTab(
+                                    child: SERBTab(
                                         title: firstTabTitle,
-                                        selected: _index == 0)),
+                                        selected: _index == 0,
+                                      textColor: GREEN,
+                                    )),
                                 GestureDetector(
                                   onTap: () {
                                     _index = 1;
                                     pageViewController.jumpToPage(1);
                                     setState(() {});
                                   },
-                                  child: _SERBTab(
+                                  child: SERBTab(
                                     title: "explore",
                                     selected: _index == 1,
+                                    textColor: GREEN,
                                   ),
                                 )
                               ],
@@ -191,33 +195,3 @@ class _BrowseNoLoginState extends State<BrowseNoLogin> {
   }
 }
 
-class _SERBTab extends StatelessWidget {
-  final String title;
-  final selected;
-  final numberOfTabs;
-
-  _SERBTab(
-      {@required this.title,
-      @required this.selected,
-      @required this.numberOfTabs});
-
-  @override
-  Widget build(BuildContext context) {
-    return AnimatedContainer(
-      curve: Curves.linearToEaseOut,
-      duration: Duration(milliseconds: 500),
-      padding: EdgeInsets.all(8.0),
-      margin: EdgeInsets.fromLTRB(8.0, 8.0, 8.0, 0.0),
-      width: 100,
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10.0),
-          color: selected ? WHITE : Colors.transparent),
-      child: Center(
-        child: Text(
-          title,
-          style: TextStyle(color: selected ? GREEN : WHITE),
-        ),
-      ),
-    );
-  }
-}

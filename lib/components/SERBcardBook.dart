@@ -74,8 +74,8 @@ class CardCover extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 100,
-      width: 100,
+      height: 50,
+      width: 50,
       decoration:
           BoxDecoration(image: DecorationImage(image: NetworkImage(image))),
     );
