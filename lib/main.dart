@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:serb/components/composets/best_matches.dart';
 import 'package:serb/misc/constants.dart';
 import 'package:serb/misc/no_glow_effect.dart';
-import 'package:serb/model/page_index_model.dart';
-import 'package:serb/screens/add_book.dart';
+import 'package:serb/screens/browse_no_login.dart';
+//TODO add textformcontroller to all froms
+
 
 void main() => runApp(MyApp());
 
@@ -19,11 +18,12 @@ class MyApp extends StatelessWidget {
             child: child,
           );
         },
-        title: 'Flutter Demo',
+        title: 'SERB',
         theme: ThemeData(
           primaryColor: DARK_BLUE,
         ),
-        home: ChangeNotifierProvider<PageIndexModel>(
-            create: (context) => PageIndexModel(), child: AddBook()));
+        home: Scaffold(
+          body: BrowseNoLogin(),
+        ));
   }
 }

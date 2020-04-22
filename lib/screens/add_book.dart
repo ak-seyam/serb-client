@@ -9,12 +9,12 @@ import 'package:serb/components/title_bar.dart';
 import 'package:serb/model/page_index_model.dart';
 import '../model/Book.dart';
 
-class AddBook extends StatefulWidget {
+class AddBookWithoutProvider extends StatefulWidget {
   @override
-  _AddBookState createState() => _AddBookState();
+  _AddBookWithoutProviderState createState() => _AddBookWithoutProviderState();
 }
 
-class _AddBookState extends State<AddBook> {
+class _AddBookWithoutProviderState extends State<AddBookWithoutProvider> {
   Widget addSingleBook, addMultipleBooks;
 
   @override

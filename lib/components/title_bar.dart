@@ -5,7 +5,7 @@ import 'package:serb/components/SERBTab.dart';
 import 'package:serb/misc/constants.dart';
 import 'package:serb/model/page_index_model.dart';
 
-class TitleBar extends StatelessWidget {
+class TitleBar<T> extends StatelessWidget {
   final String title;
   final List<String> tabs;
 
@@ -23,7 +23,7 @@ class TitleBar extends StatelessWidget {
       ),
       child: SafeArea(
         child: Container(
-          padding: EdgeInsets.fromLTRB(16, 20, 12, 16),
+          padding: EdgeInsets.fromLTRB(tabs.isNotEmpty ?16 : 28, 20, 12, 16),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
@@ -31,7 +31,7 @@ class TitleBar extends StatelessWidget {
                 title,
                 style: TextStyle(fontSize: 28, color: WHITE),
               ),
-              Container(
+              (tabs.isNotEmpty)?Container(
                 height: 45,
                 child: Align(
                   alignment: Alignment.center,
@@ -54,7 +54,7 @@ class TitleBar extends StatelessWidget {
                     },
                   ),
                 ),
-              )
+              ):Container()
             ],
           ),
         ),

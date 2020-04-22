@@ -1,10 +1,14 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:serb/components/Button.dart';
 import 'package:serb/components/SERBInputDecorationUnderlineDark.dart';
 import 'package:serb/components/SERBList.dart';
 import 'package:serb/components/composets/login_from.dart';
 import 'package:serb/misc/constants.dart';
 import 'package:serb/samples/offerSamples.dart';
+import 'package:serb/screens/AddBookAndProvider.dart';
+import 'package:serb/screens/add_offer.dart';
 import 'package:serb/screens/login_screen.dart';
 import '../misc/LogoDark.dart';
 
@@ -29,6 +33,7 @@ class _BrowseLoginState extends State<BrowseLogin> {
     initialPage: 0,
   );
   int _index = 0;
+  bool addingExpanded = false;
 
   @override
   void initState() {
@@ -78,12 +83,17 @@ class _BrowseLoginState extends State<BrowseLogin> {
                                 child: LogoDark(),
                               )),
                               GestureDetector(
-                                onTap: (){
+                                onTap: () {
+                                  addingExpanded = !addingExpanded;
+                                  setState(() {});
                                   //TODO navigate to a new add book
                                 },
                                 child: Padding(
                                   padding: const EdgeInsets.all(8.0),
-                                  child: Icon(Icons.add_circle,color: WHITE,),
+                                  child: Icon(
+                                    Icons.add_circle,
+                                    color: WHITE,
+                                  ),
                                 ),
                               ),
                               GestureDetector(
@@ -93,14 +103,42 @@ class _BrowseLoginState extends State<BrowseLogin> {
                                         context,
                                         MaterialPageRoute(
                                             builder: (context) =>
-                                                LoginScreen()),(_)=>false);
+                                                LoginScreen()),
+                                        (_) => false);
                                   },
-                                  child:
-                                      Padding(
-                                        padding: const EdgeInsets.all(8.0),
-                                        child: Icon(Icons.power_settings_new, color: WHITE),
-                                      ))
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Icon(Icons.power_settings_new,
+                                        color: WHITE),
+                                  ))
                             ],
+                          ),
+                          AnimatedContainer(
+                            duration: Duration(milliseconds: 300),
+                            height: addingExpanded ? 50 : 0,
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: <Widget>[
+                                SERBButton(
+                                    text: "Book",
+                                    onTap: () {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) => AddBook()));
+                                    }),
+                                SERBButton(
+                                  text: "offer",
+                                  onTap: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => AddOffer()));
+                                  },
+                                )
+                              ],
+                            ),
                           ),
                           SizedBox(
                             height: 8.0,
@@ -161,9 +199,8 @@ class _BrowseLoginState extends State<BrowseLogin> {
                       ),
                       Expanded(
                         child: Theme(
-                          data: Theme.of(context).copyWith(
-                            canvasColor: DARK_BLUE
-                          ),
+                          data: Theme.of(context)
+                              .copyWith(canvasColor: DARK_BLUE),
                           child: DropdownButton(
                             value: filterBy,
                             icon: Icon(
@@ -181,9 +218,7 @@ class _BrowseLoginState extends State<BrowseLogin> {
                             items: filterOptions
                                 .map<DropdownMenuItem<String>>((String e) {
                               return DropdownMenuItem(
-                                  value: e,
-                                  child: Container(
-                                      child: Text(e)));
+                                  value: e, child: Container(child: Text(e)));
                             }).toList(),
                             underline: Container(
                               height: 2,

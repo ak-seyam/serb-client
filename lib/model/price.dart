@@ -8,7 +8,7 @@ final DurationsMap = {
   Durations.PerDay: "/Day",
   Durations.PerMonth: "/Month",
   Durations.PerYear: "/Year",
-  Durations.Forever: ""
+  Durations.Forever: "",
 };
 
 class Price {
