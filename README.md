@@ -7,7 +7,7 @@ Client for Serb application
 ![screen4](Screenshot_2020-04-22-23-57-36.png)
 
 ## Testing
-This is just a client with no business or persistence logic if you still want to try it download the app from releases *alpha releases*
+This is just a client with no business or persistence logic if you still want to try it download the *alpha* from releases
 
 For web you can use any simple server to run for example Python's `http.server`
 
