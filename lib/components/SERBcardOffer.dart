@@ -4,10 +4,10 @@ import 'package:serb/misc/constants.dart';
 import '../model/Offer.dart';
 import 'package:quartet/quartet.dart';
 
-class SERBCard extends StatelessWidget {
+class SERBCardOffer extends StatelessWidget {
   final Offer offer;
 
-  SERBCard({this.offer});
+  SERBCardOffer({this.offer});
 
   @override
   Widget build(BuildContext context) {
