@@ -8,12 +8,12 @@ import 'package:serb/samples/offerSamples.dart';
 import 'package:serb/screens/login_screen.dart';
 import '../misc/LogoDark.dart';
 
-class BrowseNoLogin extends StatefulWidget {
+class BrowseLogin extends StatefulWidget {
   @override
-  _BrowseNoLoginState createState() => _BrowseNoLoginState();
+  _BrowseLoginState createState() => _BrowseLoginState();
 }
 
-class _BrowseNoLoginState extends State<BrowseNoLogin> {
+class _BrowseLoginState extends State<BrowseLogin> {
   Widget firstTab, explore;
 
   String firstTabTitle = "Newest";
@@ -78,17 +78,27 @@ class _BrowseNoLoginState extends State<BrowseNoLogin> {
                                 child: LogoDark(),
                               )),
                               GestureDetector(
+                                onTap: (){
+                                  //TODO navigate to a new add book
+                                },
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Icon(Icons.add_circle,color: WHITE,),
+                                ),
+                              ),
+                              GestureDetector(
                                   onTap: () {
-                                    Navigator.push(
+                                    //TODO do logout logic
+                                    Navigator.pushAndRemoveUntil(
                                         context,
                                         MaterialPageRoute(
                                             builder: (context) =>
-                                                LoginScreen()));
+                                                LoginScreen()),(_)=>false);
                                   },
                                   child:
                                       Padding(
                                         padding: const EdgeInsets.all(8.0),
-                                        child: Icon(Icons.account_circle, color: WHITE),
+                                        child: Icon(Icons.power_settings_new, color: WHITE),
                                       ))
                             ],
                           ),

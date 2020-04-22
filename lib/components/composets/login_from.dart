@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:serb/components/SERBInputDecoration.dart';
+import 'package:serb/screens/browse_login.dart';
 import '../Button.dart';
 
 class SERBLoginFrom extends StatefulWidget {
@@ -57,6 +58,10 @@ class _SERBLoginFromState extends State<SERBLoginFrom> {
                     Scaffold.of(context).showSnackBar(SnackBar(
                       content: Text("connecting..."),
                     ));
+                    //TODO login logic
+                    Navigator.pushAndRemoveUntil(context,
+                        MaterialPageRoute(builder: (context) => BrowseLogin()), (
+                            route) => false);
                   }
                 },
               )
