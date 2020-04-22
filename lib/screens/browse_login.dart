@@ -1,3 +1,4 @@
+import 'package:camera/camera.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -130,11 +131,15 @@ class _BrowseLoginState extends State<BrowseLogin> {
                                     }),
                                 SERBButton(
                                   text: "offer",
-                                  onTap: () {
+                                  onTap: () async{
+                                    WidgetsFlutterBinding.ensureInitialized();
+                                    final cameras = await availableCameras();
+                                    final firstCamera = cameras.first;
+
                                     Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                            builder: (context) => AddOffer()));
+                                            builder: (context) => AddOffer(camera: firstCamera,)));
                                   },
                                 )
                               ],

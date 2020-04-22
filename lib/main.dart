@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:serb/misc/constants.dart';
 import 'package:serb/misc/no_glow_effect.dart';
+import 'package:serb/model/PhotoPathModel.dart';
 import 'package:serb/screens/browse_no_login.dart';
 //TODO add textformcontroller to all froms
 
@@ -11,19 +13,26 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        builder: (context, child) {
-          return ScrollConfiguration(
-            behavior: NoGlowBehaviour(),
-            child: child,
-          );
-        },
-        title: 'SERB',
-        theme: ThemeData(
-          primaryColor: DARK_BLUE,
-        ),
-        home: Scaffold(
-          body: BrowseNoLogin(),
-        ));
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider<PhotoPathModel>(
+          create: (context) => PhotoPathModel(),
+        )
+      ],
+      child: MaterialApp(
+          builder: (context, child) {
+            return ScrollConfiguration(
+              behavior: NoGlowBehaviour(),
+              child: child,
+            );
+          },
+          title: 'SERB',
+          theme: ThemeData(
+            primaryColor: DARK_BLUE,
+          ),
+          home: Scaffold(
+            body: BrowseNoLogin(),
+          )),
+    );
   }
 }
