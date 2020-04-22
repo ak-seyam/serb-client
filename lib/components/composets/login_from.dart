@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:serb/components/SERBInputDecoration.dart';
+import 'package:serb/components/composets/forget_password_dialog.dart';
+import 'package:serb/misc/constants.dart';
 import 'package:serb/screens/browse_login.dart';
+import 'package:serb/screens/sign_up_screen.dart';
 import '../Button.dart';
 
 class SERBLoginFrom extends StatefulWidget {
@@ -64,6 +67,35 @@ class _SERBLoginFromState extends State<SERBLoginFrom> {
                             route) => false);
                   }
                 },
+              ),
+              GestureDetector(
+                onTap: (){
+                  showDialog(context: context,builder: (_) => ForgotPasswordDialog());
+                },
+                child: Text(
+                  "Forgot your password?",
+                  style: TextStyle(color: BLACK),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.fromLTRB(0, 16.0, 0, 8.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Text(
+                      "New here? ",
+                      style: TextStyle(color: Colors.grey),
+                    ),
+                    GestureDetector(
+                        onTap: (){
+                          Navigator.of(context).push(MaterialPageRoute(builder: (context)=>SignUpScreen()));
+                        },
+                        child: Text(
+                          "Sign up now!",
+                          style: TextStyle(color: BLACK),
+                        ))
+                  ],
+                ),
               )
             ],
           ),
